@@ -226,7 +226,7 @@ A few components within the starter project must be completed, which are marked 
 
     ![TODO 1 is highlighted in the Visual Studio Task List.](images/image9.png "Task List")
 
-5. Update the code on the line below the `TODO 1` comment, using the following code, then save the changes  
+5. Update the code on the line below the `TODO 1` comment, using the following code, then save the changes using **Ctrl+s** keyword. 
 
     ```csharp
     // **TODO 1: Set the licensePlateText value by awaiting a new FindLicensePlateText.GetLicensePlate method.**
@@ -239,7 +239,7 @@ A few components within the starter project must be completed, which are marked 
 
     ![TODO 2 is highlighted in the Visual Studio Task List.](images/image10.png "Task List")
 
-7. The following code represents the completed task in FindLicensePlateText.cs:
+7. The following code represents the completed task in FindLicensePlateText.cs, then save the changes using **Ctrl+s** keyword.
 
     ```csharp
     // TODO 2: Populate the below two variables with the correct AppSettings properties.
@@ -251,9 +251,9 @@ A few components within the starter project must be completed, which are marked 
 
     > This class is responsible for sending an Event to the Event Grid topic, including the event type and license plate data. Event listeners will use the event type to filter and act on the events they need to process. Please make a note of the event types defined here (the first parameter passed into the Send method), as they will be used later on when creating new functions in the second Function App you provisioned earlier.
 
-    ![TODO 3 is highlighted in the Visual Studio Task List.](media/visual-studio-task-list-todo-3.png "Task List")
+    ![TODO 3 is highlighted in the Visual Studio Task List.](images/image12.png "Task List")
 
-9. `TODOs` 3 and 4 are next to each other in the `SendToEventGrid.cs` file, so use the following code to complete the two tasks in `SendToEventGrid.cs`:
+9. `TODOs` 3 and 4 are next to each other in the `SendToEventGrid.cs` file, so use the following code to complete the two tasks in `SendToEventGrid.cs` and then save the changes using **Ctrl+s** keyword.
 
     ```csharp
     // TODO 3: Modify send method to include the proper eventType name value for saving plate data.
@@ -273,11 +273,11 @@ In this task, you will publish the Function App from the starter project in Visu
 
 2. Right-click the **TollBooth** project, and select **Publish** from the context menu.
 
-    ![In Solution Explorer, the TollBooth is selected, and within its context menu, the Publish item is selected.](media/image39.png "Solution Explorer")
+    ![In Solution Explorer, the TollBooth is selected, and within its context menu, the Publish item is selected.](images/image11.png "Solution Explorer")
 
 3. In the Publish window, select **Azure**, then select **Next**.
 
-    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](media/vs-publish-function.png 'Publish window')
+    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](images/image13.png 'Publish window')
 
 > **Note**: If you do not see the ability to publish to an Azure Function, you may need to update your Visual Studio instance.
 
@@ -285,7 +285,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
 5. Whatever you named the Function App when you provisioned it is okay. Just make sure it is the same one to which you applied the Application Settings in Task 1 of this exercise.
 
-    ![In the App Service form, Resource Group displays in the View field, and in the tree-view below, the hands-on-lab-SUFFIX folder is expanded, and TollBoothFunctionApp is selected.](media/vs-publish-function2.png 'Publish window')
+    ![In the App Service form, Resource Group displays in the View field, and in the tree-view below, the hands-on-lab-SUFFIX folder is expanded, and TollBoothFunctionApp is selected.](images/image14.png 'Publish window')
 
     > **Important**: We do not want to run from a package file because when we deploy from GitHub later on, the build process will be skipped if the Function App is configured for a zip deployment.
 
@@ -293,38 +293,49 @@ In this task, you will publish the Function App from the starter project in Visu
 
 7. Select **Publish** to start the process. Watch the Output window in Visual Studio as the Function App publishes. When it is finished, you should see a message that says, `========== Publish: 1 succeeded, 0 failed, 0 skipped ==========`.
 
-> **Note**: If prompted to update the version of the function on Azure, select **Yes**.
+   > **Note**: If prompted to update the version of the function on Azure, select **Yes**.
 
-    ![The Publish button is selected.](media/vs-publish-function3.png "Publish")
+    ![The Publish button is selected.](images/image15.png "Publish")
+    
+    ![The Publish button is selected.](images/image16.png "Publish")
 
 8. Using a new tab or instance of your browser, navigate to the Azure portal, <http://portal.azure.com>.
 
 9. Open the **hands-on-lab-SUFFIX** resource group, then select the **TollBoothFunctions** Azure Function App, to which you just published.
 
+    ![](images/image17.png)
+
 10. Select **Functions** in the left-hand navigation menu. You should see both functions you just published from the Visual Studio solution listed.
 
-    ![In the Function Apps blade, in the left tree-view, both TollBoothFunctionApp and Functions (Read Only) are expanded. Beneath Functions (Read Only), two functions ExportLicensePlates and ProcessImage are highlighted.](media/dotnet-functions.png 'TollBoothFunctionApp blade')
+    ![In the Function Apps blade, in the left tree-view, both TollBoothFunctionApp and Functions (Read Only) are expanded. Beneath Functions (Read Only), two functions ExportLicensePlates and ProcessImage are highlighted.](images/image18.png 'TollBoothFunctionApp blade')
 
-11. Now, we need to add an Event Grid subscription to the ProcessImage function, so the function is triggered when new images are added to the data lake storage container. Select the **ProcessImage** function, select **Integration** on the left-hand menu, select **Event Grid Trigger (eventGridEvent)**, and then select **Create Event Grid subscription**.
+11. Now, we need to add an Event Grid subscription to the ProcessImage function, so the function is triggered when new images are added to the data lake storage container. 
 
-    ![In the TollboothFunctionApp tree-view, the ProcessImage function is selected. In the code window pane, the Add Event Grid subscription link is highlighted.](media/processimage-add-eg-sub.png 'ProcessImage function')
+12. Open the **ProcessImage** function, click on **Integration(1)** on the left-hand menu, select **Event Grid Trigger(eventGridEvent)(2)**, and then select **Create Event Grid subscription(3)**.
 
-12. On the **Create Event Subscription** blade, specify the following configuration options:
+    ![In the TollboothFunctionApp tree-view, the ProcessImage function is selected. In the code window pane, the Add Event Grid subscription link is highlighted.](images/image19.png 'ProcessImage function')
 
-    - **Name**: Enter a unique value, similar to **processimagesub** (ensure the green check mark appears).
+13. On the **Create Event Subscription** blade, specify the following configuration options:
+
+    - **Name**: Enter **processimagesub-****<inject key="DeploymentID" />** (ensure the green check mark appears).
     - **Event Schema**: Select **Event Grid Schema**.
     - **Topic Type**: Select **Storage Accounts (Blob & GPv2)**.
     - **Subscription**: Select the subscription you are using for this hands-on lab.
     - **Resource Group**: Select the **hands-on-lab-SUFFIX** resource group from the list of existing resource groups.
     - **Resource**: Select your data lake storage account. This should be the only account listed, and will start with `datalake`.
+    
+    ![In the Create event subscription form, the fields are set to the previously defined values.](images/image20.png)
+    
     - **System Topic Name**: Enter **processimagesubtopic**.
     - **Filter to Event Types**: Select only the **Blob Created** from the event types dropdown list.
     - **Endpoint Type**: Leave Azure Function as the Endpoint Type.
     - **Endpoint**: Leave as ProcessImage.
 
-    ![In the Create event subscription form, the fields are set to the previously defined values.](media/process-image-sub-topic.png)
+    ![In the Create event subscription form, the fields are set to the previously defined values.](images/image21.png)
 
-13. Select **Create**.
+14. Select **Create**.
+
+![In the Create event subscription form, the fields are set to the previously defined values.](images/image22.png)
 
 ## Exercise 2: Create functions in the portal
 
