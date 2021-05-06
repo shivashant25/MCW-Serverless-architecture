@@ -208,15 +208,13 @@ A few components within the starter project must be completed, which are marked 
 
 > **Note:** Do **NOT** update the version of any NuGet package. This solution is built to function with the NuGet package versions currently defined within. Updating these packages to newer versions could cause unexpected results.
 
-> **Note:** Ensure the files are located under `C:\ServerlessMCW\`. If the files are located under a longer root path, such as  `C:\Users\workshop\Downloads\`, you will encounter build issues in later steps: `The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters`.
+1. In Visual Studio, open the **View** menu and select **Task List**.
 
-1. From the Visual Studio **View** menu, select **Task List**.
-
-    ![The Visual Studio Menu displays, with View and Task List selected.](media/vs-task-list-link.png 'Visual Studio Menu')
+    ![The Visual Studio Menu displays, with View and Task List selected.](images/image7.png 'Visual Studio Menu')
 
 2. There, you will see a list of `TODO` tasks, where each task represents one line of code that needs to be completed.
 
-    ![A list of TODO tasks, including their description, project, file, and line number are displayed.](media/vs-task-list.png 'TODO tasks')
+    ![A list of TODO tasks, including their description, project, file, and line number are displayed.](images/image8.png 'TODO tasks')
 
 3. In the Visual Studio Solution Explorer, expand the **TollBooth** project and double-click `ProcessImage.cs` to open the file.
 
@@ -224,11 +222,11 @@ A few components within the starter project must be completed, which are marked 
 
     ![The ProcessImage.cs file is highlighted within the TollBooth project in the Visual Studio Solution Explorer.](media/visual-studio-solution-explorer-process-image.png "Solution Explorer")
 
-4. In the **Task List** pane at the bottom of the Visual Studio window, double-click the `TODO 1` item, which will take you to the first `TODO` task.
+4. In the **Task List** pane at the bottom of the Visual Studio window, double-click on the `TODO 1` item, which will take you to the first `TODO` task.
 
-    ![TODO 1 is highlighted in the Visual Studio Task List.](media/visual-studio-task-list-todo-1.png "Task List")
+    ![TODO 1 is highlighted in the Visual Studio Task List.](images/image9.png "Task List")
 
-5. Update the code on the line below the `TODO 1` comment, using the following code:
+5. Update the code on the line below the `TODO 1` comment, using the following code, then save the changes  
 
     ```csharp
     // **TODO 1: Set the licensePlateText value by awaiting a new FindLicensePlateText.GetLicensePlate method.**
@@ -239,7 +237,7 @@ A few components within the starter project must be completed, which are marked 
 
     > This class is responsible for contacting the Computer Vision service's Read API to find and extract the license plate text from the photo using OCR. Notice that this class also shows how you can implement a resilience pattern using [Polly](https://github.com/App-vNext/Polly), an open-source .NET library that helps you handle transient errors. This is useful for ensuring that you do not overload downstream services, in this case, the Computer Vision service. This will be demonstrated later on when visualizing the Function's scalability.
 
-    ![TODO 2 is highlighted in the Visual Studio Task List.](media/visual-studio-task-list-todo-2.png "Task List")
+    ![TODO 2 is highlighted in the Visual Studio Task List.](images/image10.png "Task List")
 
 7. The following code represents the completed task in FindLicensePlateText.cs:
 
