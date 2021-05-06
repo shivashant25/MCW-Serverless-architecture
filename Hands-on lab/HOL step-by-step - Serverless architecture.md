@@ -359,9 +359,11 @@ In this task, you will create a new Node.js function triggered by Event Grid and
 
 2. Open the **hands-on-lab-SUFFIX** resource group and select the Azure Function App you created whose name begins with **TollBoothEvents**. If you did not use this naming convention, make sure you choose the Function App that you _did not_ deploy to in the previous exercise.
 
+    ![The Publish button is selected.](images/image23.png "Publish")
+
 3. Select **Functions** in the left-hand menu, then select **+ Add**.
 
-    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](media/functions-new.png 'TollBoothEvents blade')
+    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](images/image24.png 'TollBoothEvents blade')
 
 4. Enter **event grid** into the **Select a template** filter box, select the **Azure Event Grid trigger** template, and then enter `SavePlateData` into the **New Function** name field.
 
@@ -544,17 +546,17 @@ Application Insights can be integrated with Azure Function Apps to provide robus
 
 1. Open the **appinsights** Application Insights resource from within your lab resource group.
 
-    ![The Application Insights instance is highlighted in the resource group.](media/resource-group-application-insights.png "Application Insights")
+    ![The Application Insights instance is highlighted in the resource group.](images/image25.png "Application Insights")
 
 2. In Application Insights, select **Live Metrics Stream** under Investigate in the left-hand navigation menu.
 
-    ![In the TollBoothMonitor blade, in the pane under Investigate, Live Metrics Stream is selected. ](media/live-metrics-link.png 'TollBoothMonitor blade')
+    ![In the TollBoothMonitor blade, in the pane under Investigate, Live Metrics Stream is selected. ](images/image26.png 'TollBoothMonitor blade')
 
 3. Leave the Live Metrics Stream open and return to the starter app solution in Visual Studio on the LabVM.
 
 4. Navigate to the **UploadImages** project using the Solution Explorer of Visual Studio. Right-click on **UploadImages** project and select **Properties**.
 
-    ![In Solution Explorer, the UploadImages project is expanded, and Properties is selected from the right-click context menu.](media/vs-uploadimages.png 'Solution Explorer')
+    ![In Solution Explorer, the UploadImages project is expanded, and Properties is selected from the right-click context menu.](images/image27.png 'Solution Explorer')
 
 5. Select **Debug** in the left-hand menu, then paste the connection string for your Azure Data Lake Storage Gen2 account into the **Command line arguments** text field. This will ensure that the required connection string is added as an argument each time you run the application. Additionally, the combination of adding the value here and the `.gitignore` file included in the project directory will prevent the sensitive connection string from being added to your source code repository in a later step.
 
@@ -570,7 +572,7 @@ Application Insights can be integrated with Azure Function Apps to provide robus
 
 8. When the console window appears, enter **1** and press **ENTER**. This action uploads a handful of car photos to the images container of your Blob storage account.
 
-    ![A Command prompt window displays, showing images being uploaded.](media/image69.png 'Command prompt window')
+    ![A Command prompt window displays, showing images being uploaded.](images/image28.png 'Command prompt window')
 
 9. Switch back to your browser window with the Live Metrics Stream still open within Application Insights. You should start seeing new telemetry arrive, showing the number of servers online, the incoming request rate, CPU process amount, etc. You can select some of the sample telemetry in the list to the side to view output data.
 
@@ -592,13 +594,13 @@ In this task, you will change the Computer Vision API to the Free tier. This wil
 
 1. Open your Computer Vision API service by opening the **hands-on-lab-SUFFIX** resource group and then selecting the **Cognitive Services** service name.
 
-    ![The computervision Cognitive Service resource is highlighted in the list of services in the resource group.](media/resource-group-computer-vision-resource.png "Resource group")
+    ![The computervision Cognitive Service resource is highlighted in the list of services in the resource group.](images/image29.png "Resource group")
 
 2. Select **Pricing tier** under Resource Management in the menu. Select the **F0 Free** pricing tier, then choose **Select**.
 
     > **Note**: If you already have an **F0** free pricing tier instance, you will not be able to create another one.
 
-    ![In the Cognitive Services blade, under Resource Management, the Pricing tier item is selected. In the Choose your pricing tier blade, the F0 Free option is selected.](media/image73.png 'Choose your pricing tier blade')
+    ![In the Cognitive Services blade, under Resource Management, the Pricing tier item is selected. In the Choose your pricing tier blade, the F0 Free option is selected.](images/image30.png 'Choose your pricing tier blade')
 
 3. Switch to Visual Studio, debug the **UploadImages** project again, then enter **2** and press **ENTER**. This will upload 1,000 new photos.
 
@@ -613,6 +615,8 @@ In this task, you will change the Computer Vision API to the Free tier. This wil
 5. After this has run for some time, close the UploadImages console to stop uploading photos.
 
 6. Navigate back to the **Computer Vision** resource in the Azure portal and set the pricing tier back to **S1 Standard**.
+
+    ![In the Live Metrics Stream window, 11 servers are now online.](images/image31.png 'Live Metrics Stream window')
 
 ## Exercise 4: Explore your data in Azure Cosmos DB
 
@@ -637,11 +641,11 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 
 2. On your resource group blade, select the **cosmosdb** Azure Cosmos DB account resource in the resource group's list of services available.
 
-   ![The Azure Cosmos DB account resource is highlighted in the list of services in the resource group.](media/resource-group-cosmos-db-account.png "Resources")
+   ![The Azure Cosmos DB account resource is highlighted in the list of services in the resource group.](images/image32.png "Resources")
 
 3. On the Cosmos DB blade, select **Data Explorer** from the left-hand navigation menu.
 
-    ![In the Data Explorer blade, Data Explorer is selected from the left menu.](media/data-explorer-link.png 'Data Explorer')
+    ![In the Data Explorer blade, Data Explorer is selected from the left menu.](images/image33.png 'Data Explorer')
 
 4. Expand the **LicensePlates** database and then the **Processed** collection and select **Items**. This will list each of the JSON documents added to the collection.
 
