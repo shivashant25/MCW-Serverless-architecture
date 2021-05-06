@@ -173,11 +173,11 @@ In this task, you create an RDP connection to your Lab virtual machine (VM).
 
   - Username: **<inject key="AzureAdUserEmail" />** and click on **Next**.
 
-   ![](media/w24.png)
+   ![](images/image2.png)
 
-3. Password: **<inject key="AzureAdUserPassword" />** and click on **Sign in**.
+  - Password: **<inject key="AzureAdUserPassword" />** and click on **Sign in**.
 
-   ![The Sign in button is highlighted on the Visual Studio Welcome screen.](media/visual-studio-sign-in.png "Visual Studio 2019")
+   ![](images/image3.png)
 
 5. IF prompted with a security warning, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
