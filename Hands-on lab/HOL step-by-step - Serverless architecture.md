@@ -169,7 +169,13 @@ In this task, you create an RDP connection to your Lab virtual machine (VM).
 
    ![Visual Studio 2019 is highlighted in the How do you want to open this file? dialog.](media/solution-file-open-with.png "Visual Studio 2019")
 
-4. Sign in to Visual Studio using your Azure account credentials.
+4. Click on the **Sign in** button and paste your Azure account credentials given below:
+
+  - Username: **<inject key="AzureAdUserEmail" />** and click on **Next**.
+
+   ![](media/w24.png)
+
+3. Password: **<inject key="AzureAdUserPassword" />** and click on **Sign in**.
 
    ![The Sign in button is highlighted on the Visual Studio Welcome screen.](media/visual-studio-sign-in.png "Visual Studio 2019")
 
@@ -180,17 +186,21 @@ In this task, you create an RDP connection to your Lab virtual machine (VM).
    - `TollBooth`
    - `UploadImages`
 
-   > **Note**: The UploadImages project is used for uploading a handful of car photos for testing the scalability of the serverless architecture.
+> **Note**: The UploadImages project is used for uploading a handful of car photos for testing the scalability of the serverless architecture.
 
    ![The two projects listed above are highlighted in Solution Explorer.](media/visual-studio-solution-explorer-projects.png 'Solution Explorer')
 
-7. To validate connectivity to your Azure subscription from Visual Studio, open **Cloud Explorer** from the **View** menu and ensure that you can connect to your Azure subscription.
+7. To validate connectivity to your Azure subscription from Visual Studio, open **Cloud Explorer** from the **View** menu.
 
-   ![In Cloud Explorer, the list of Azure subscriptions is shown. A single subscription is highlighted and expanded in the list.](media/vs-cloud-explorer.png 'Cloud Explorer')
+   ![In Cloud Explorer, the list of Azure subscriptions is shown. A single subscription is highlighted and expanded in the list.](images/image5.png 'Cloud Explorer')
 
-   > **Note**: You may need to select the account icon and log in with your Azure account before seeing the resources below your subscription.
+> **Note**: You may need to select the account icon and log in with your Azure account before seeing the resources below your subscription.
 
-8. Return to the open File Explorer window and navigate back to the **src** subfolder. From there, open the **license plates** subfolder. It contains sample license plate photos used for testing out the solution. One of the images is guaranteed to fail OCR processing, which is meant to show how the workload is designed to handle such failures. The UploadImages project uses the **copyfrom** folder as a basis for the 1,000 photo upload option for testing scalability.
+8. Ensure that you can connect to your Azure subscription.
+
+   ![](images/image6.png 'Cloud Explorer')
+
+9. Return to the open File Explorer window and navigate back to the **src** subfolder. From there, open the **license plates** subfolder. It contains sample license plate photos used for testing out the solution. One of the images is guaranteed to fail OCR processing, which is meant to show how the workload is designed to handle such failures. The UploadImages project uses the **copyfrom** folder as a basis for the 1,000 photo upload option for testing scalability.
 
 ### Task 3: Finish the ProcessImage function
 
@@ -255,7 +265,7 @@ A few components within the starter project must be completed, which are marked 
     await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
     ```
 
-    > **Note**: `TODOs` 5, 6, and 7 will be completed in later steps of the guide.
+> **Note**: `TODOs` 5, 6, and 7 will be completed in later steps of the guide.
 
 ### Task 4: Publish the Function App from Visual Studio
 
@@ -271,7 +281,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
     ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](media/vs-publish-function.png 'Publish window')
 
-    > **Note**: If you do not see the ability to publish to an Azure Function, you may need to update your Visual Studio instance.
+> **Note**: If you do not see the ability to publish to an Azure Function, you may need to update your Visual Studio instance.
 
 4. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **hands-on-lab-SUFFIX** resource group and select the Function App whose name ends with **FunctionApp**. Finally, **uncheck the `Run from package file` option**.
 
@@ -285,7 +295,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
 7. Select **Publish** to start the process. Watch the Output window in Visual Studio as the Function App publishes. When it is finished, you should see a message that says, `========== Publish: 1 succeeded, 0 failed, 0 skipped ==========`.
 
-    > **Note**: If prompted to update the version of the function on Azure, select **Yes**.
+> **Note**: If prompted to update the version of the function on Azure, select **Yes**.
 
     ![The Publish button is selected.](media/vs-publish-function3.png "Publish")
 
@@ -412,7 +422,7 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 3. Scroll down in the Create Output form, select **New** under the **Cosmos DB account connection** field.
 
-    > **Note**: If you see a notice for "Extensions not installed," select **Install** and wait for the extension installation to complete before proceeding.
+> **Note**: If you see a notice for "Extensions not installed," select **Install** and wait for the extension installation to complete before proceeding.
 
     ![A message is displayed indicating the Cosmos DB Extensions are not installed. The Install link is selected.](media/cosmos-extension-install.png 'Cosmos DB Extensions not installed')
 
@@ -422,7 +432,7 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 5. Select **OK**.
 
-    > **Note**: You should wait for the template dependency to install to complete if you were prompted earlier.
+> **Note**: You should wait for the template dependency to install to complete if you were prompted earlier.
 
     ![Under Azure Cosmos DB output the following field values display: Document parameter name, outputDocument; Collection name, Processed; Database name, LicensePlates; Azure Cosmos DB account connection, cosmosdb_DOCUMENTDB.](media/saveplatedata-cosmos-integration.png 'Azure Cosmos DB output section')
 
