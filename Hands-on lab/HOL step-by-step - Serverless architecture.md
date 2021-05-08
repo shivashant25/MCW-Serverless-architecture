@@ -159,7 +159,7 @@ In this task, you create an RDP connection to your Lab virtual machine (VM).
 
 ### Task 2: Open the starter solution in Visual Studio
 
-1. On the LabVM, open File Explorer and navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\lab-files\src\TollBooth`.
+1. In the LabVM, open File Explorer and navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\lab-files\src\TollBooth`.
 
 2. From the **TollBooth** folder, open the Visual Studio Solution by double-clicking the `TollBooth.sln` file.
 
