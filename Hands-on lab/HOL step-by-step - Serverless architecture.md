@@ -317,7 +317,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
 13. On the **Create Event Subscription** blade, specify the following configuration options:
 
-    - **Name**: Enter **processimagesub-****<inject key="DeploymentID" />** (ensure the green check mark appears).
+    - **Name**: Enter **processimagesub-**<inject key="DeploymentID" />** (ensure the green check mark appears).
     - **Event Schema**: Select **Event Grid Schema**.
     - **Topic Type**: Select **Storage Accounts (Blob & GPv2)**.
     - **Subscription**: Select the subscription you are using for this hands-on lab.
