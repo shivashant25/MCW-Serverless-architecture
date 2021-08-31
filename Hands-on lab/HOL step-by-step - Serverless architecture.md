@@ -188,7 +188,7 @@ In this task, you create an RDP connection to your Lab virtual machine (VM).
 
 > **Note**: The UploadImages project is used for uploading a handful of car photos for testing the scalability of the serverless architecture.
 
-   ![The two projects listed above are highlighted in Solution Explorer.](media/Tollbooth&UploadImages.png 'Solution Explorer')
+    ![The two projects listed above are highlighted in Solution Explorer.](media/Tollbooth&UploadImages.png 'Solution Explorer')
 
 7. To validate connectivity to your Azure subscription from Visual Studio, open **Cloud Explorer** from the **View** menu.
 
@@ -277,21 +277,25 @@ In this task, you will publish the Function App from the starter project in Visu
 
 3. In the Publish window, select **Azure**, then select **Next**.
 
-    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](images/image13.png 'Publish window')
+    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](images/vs-publish-function0.png 'Publish window')
 
 > **Note**: If you do not see the ability to publish to an Azure Function, you may need to update your Visual Studio instance.
 
-4. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **hands-on-lab-SUFFIX** resource group and select the Function App whose name ends with **FunctionApp**. Finally, **uncheck the `Run from package file` option**.
+4. Select **Azure Function App [Windows]** and click **Next**.
 
-5. Whatever you named the Function App when you provisioned it is okay. Just make sure it is the same one to which you applied the Application Settings in Task 1 of this exercise.
+    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](images/vs-publish-function1.png 'Publish window')
+    
+5. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **hands-on-lab-SUFFIX** resource group and select the Function App whose name ends with **FunctionApp**. Finally, **uncheck the `Run from package file` option**.
+
+6. Whatever you named the Function App when you provisioned it is okay. Just make sure it is the same one to which you applied the Application Settings in Task 1 of this exercise.
 
     ![In the App Service form, Resource Group displays in the View field, and in the tree-view below, the hands-on-lab-SUFFIX folder is expanded, and TollBoothFunctionApp is selected.](images/image14.png 'Publish window')
 
     > **Important**: We do not want to run from a package file because when we deploy from GitHub later on, the build process will be skipped if the Function App is configured for a zip deployment.
 
-6. After you select the Function App, select **Finish**.
+7. After you select the Function App, select **Finish**.
 
-7. Select **Publish** to start the process. Watch the Output window in Visual Studio as the Function App publishes. When it is finished, you should see a message that says, `========== Publish: 1 succeeded, 0 failed, 0 skipped ==========`.
+8. Select **Publish** to start the process. Watch the Output window in Visual Studio as the Function App publishes. When it is finished, you should see a message that says, `========== Publish: 1 succeeded, 0 failed, 0 skipped ==========`.
 
    > **Note**: If prompted to update the version of the function on Azure, select **Yes**.
 
@@ -299,23 +303,23 @@ In this task, you will publish the Function App from the starter project in Visu
     
     ![The Publish button is selected.](images/image16.png "Publish")
 
-8. Using a new tab or instance of your browser, navigate to the Azure portal, <http://portal.azure.com>.
+9. Using a new tab or instance of your browser, navigate to the Azure portal, <http://portal.azure.com>.
 
-9. Open the **hands-on-lab-SUFFIX** resource group, then select the **TollBoothFunctions** Azure Function App, to which you just published.
+10. Open the **hands-on-lab-SUFFIX** resource group, then select the **TollBoothFunctions** Azure Function App, to which you just published.
 
     ![](images/image17.png)
 
-10. Select **Functions** in the left-hand navigation menu. You should see both functions you just published from the Visual Studio solution listed.
+11. Select **Functions** in the left-hand navigation menu. You should see both functions you just published from the Visual Studio solution listed.
 
     ![In the Function Apps blade, in the left tree-view, both TollBoothFunctionApp and Functions (Read Only) are expanded. Beneath Functions (Read Only), two functions ExportLicensePlates and ProcessImage are highlighted.](images/image18.png 'TollBoothFunctionApp blade')
 
-11. Now, we need to add an Event Grid subscription to the ProcessImage function, so the function is triggered when new images are added to the data lake storage container. 
+12. Now, we need to add an Event Grid subscription to the ProcessImage function, so the function is triggered when new images are added to the data lake storage container. 
 
-12. Open the **ProcessImage** function, click on **Integration(1)** on the left-hand menu, select **Event Grid Trigger(eventGridEvent)(2)**, and then select **Create Event Grid subscription(3)**.
+13. Open the **ProcessImage** function, click on **Integration(1)** on the left-hand menu, select **Event Grid Trigger(eventGridEvent)(2)**, and then select **Create Event Grid subscription(3)**.
 
     ![In the TollboothFunctionApp tree-view, the ProcessImage function is selected. In the code window pane, the Add Event Grid subscription link is highlighted.](images/image19.png 'ProcessImage function')
 
-13. On the **Create Event Subscription** blade, specify the following configuration options:
+14. On the **Create Event Subscription** blade, specify the following configuration options:
 
     - **Name**: Enter **processimagesub-**<inject key="DeploymentID" />** (ensure the green check mark appears).
     - **Event Schema**: Select **Event Grid Schema**.
@@ -333,7 +337,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
     ![In the Create event subscription form, the fields are set to the previously defined values.](images/image21.png)
 
-14. Select **Create**.
+15. Select **Create**.
 
 ![In the Create event subscription form, the fields are set to the previously defined values.](images/image22.png)
 
