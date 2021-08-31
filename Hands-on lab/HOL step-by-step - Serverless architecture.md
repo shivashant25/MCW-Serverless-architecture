@@ -188,7 +188,7 @@ In this task, you create an RDP connection to your Lab virtual machine (VM).
 
 > **Note**: The UploadImages project is used for uploading a handful of car photos for testing the scalability of the serverless architecture.
 
-   ![The two projects listed above are highlighted in Solution Explorer.](media/visual-studio-solution-explorer-projects.png 'Solution Explorer')
+   ![The two projects listed above are highlighted in Solution Explorer.](media/Tollbooth&UploadImages.png 'Solution Explorer')
 
 7. To validate connectivity to your Azure subscription from Visual Studio, open **Cloud Explorer** from the **View** menu.
 
