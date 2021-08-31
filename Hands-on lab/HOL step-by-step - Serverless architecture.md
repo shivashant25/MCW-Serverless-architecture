@@ -437,9 +437,9 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 3. Scroll down in the Create Output form, select **New** under the **Cosmos DB account connection** field.
 
+ ![A message is displayed indicating the Cosmos DB Extensions are not installed. The Install link is selected.](media/cosmos-extension-install.png 'Cosmos DB Extensions not installed')
+ 
 > **Note**: If you see a notice for "Extensions not installed," select **Install** and wait for the extension installation to complete before proceeding.
-
-    ![A message is displayed indicating the Cosmos DB Extensions are not installed. The Install link is selected.](media/cosmos-extension-install.png 'Cosmos DB Extensions not installed')
 
 4. Select your Cosmos DB account in the Cosmos DB account connection list and then select **OK**.
 
