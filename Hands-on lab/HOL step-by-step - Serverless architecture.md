@@ -365,15 +365,15 @@ In this task, you will create a new Node.js function triggered by Event Grid and
 
     ![The Publish button is selected.](images/image23.png "Publish")
 
-3. Select **Functions** in the left-hand menu, then select **+ Add**.
+3. Select **Functions** in the left-hand menu, then select **+ Create**.
 
-    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](images/image24.png 'TollBoothEvents blade')
+    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](media/TL-events1.png 'TollBoothEvents blade')
 
 4. Enter **event grid** into the **Select a template** filter box, select the **Azure Event Grid trigger** template, and then enter `SavePlateData` into the **New Function** name field.
 
-    ![In the Add function dialog, event grid is entered into the filter box, the Azure Event Grid trigger template is selected and highlighted, and SavePlateData is entered in the Name field and highlighted.](media/new-function-save-plate-data.png "Add function form")
+    ![In the Add function dialog, event grid is entered into the filter box, the Azure Event Grid trigger template is selected and highlighted, and SavePlateData is entered in the Name field and highlighted.](media/saveplatedata.png "Add function form")
 
-5. Select **Add**.
+5. Select **Create**.
 
 6. On the **SavePlateData** Function blade, select **Code + Test** from the left-hand menu and replace the code in the new `SavePlateData` function's `index.js` file with the following:
 
@@ -457,15 +457,15 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 In this task, you will create another new function triggered by Event Grid and outputs information about photos that need to be manually verified to Azure Cosmos DB.
 
-1. Select **Functions** in the left-hand menu, then select **+ Add**.
+1. Select **Functions** in the left-hand menu, then select **+ Create**.
 
-    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](media/functions-new.png 'TollBoothEvents blade')
+    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](media/TL-events2.png 'TollBoothEvents blade')
 
 2. Enter **event grid** into the **Select a template** filter box, select the **Azure Event Grid trigger** template, and then enter `QueuePlateForManualCheckup` into the **New Function** name field.
 
-    ![In the Add function dialog, event grid is entered into the filter box. The Azure Event Grid trigger template is selected and highlighted, and QueuePlateForManualCheckup is entered in the Name field and highlighted.](media/new-function-manual-checkup.png "Add function form")
+    ![In the Add function dialog, event grid is entered into the filter box. The Azure Event Grid trigger template is selected and highlighted, and QueuePlateForManualCheckup is entered in the Name field and highlighted.](media/queueplateformanualcheckup.png "Add function form")
 
-3. Select **Add**.
+3. Select **Create**.
 
 4. On the **QueuePlateForManualCheckup** Function blade, select **Code + Test** from the left-hand menu and replace the code in the new `QueuePlateForManualCheckup` function's `index.js` file with the following:
 
