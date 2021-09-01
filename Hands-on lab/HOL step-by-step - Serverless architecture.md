@@ -862,6 +862,20 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 7. Select **Save**.
 
+   > **Note**: Navigate to **Github** and select **Actions** tab to confirm the Build and deploy dotnet core app to Azure Function App to Add or update the App Service is **Success**.
+   
+   ![To confirm the Build and deploy dotnet core app to Azure Function App to Add or update the App Service is Success.](media/Build&Deploy-Success.png "GitHub Settings")
+  
+8. If the Build and deploy dotnet core app to Azure Function App to Add or update the App Service is **Failure** in GitHub. Then click on eclipse **...(1)** and select **View workflow file(2)**. Need to update with available Dotnet version.
+
+   ![Build and deploy dotnet core app to Azure Function App to Add or update the App Service is Failure.](media/Build&Deploy-Failure.png "GitHub Settings")
+   
+9. Click the **Edit** option at the Right-Top of the workflow file. In Line Number 14, update the **DOTNET_VERSION: 'v4.0'** to **DOTNET_VERSION: '3.1.201'** (1) and click on **Start commit(2)** and next select **Commit changes(3)**.
+
+   ![Edit the workflow file with DOTNET_VERSION: '3.1.201' and commit the changes.](media/Build&Deploy-Edit.png "GitHub Settings")
+   
+10. Go to **Actions** and check the updated workflow gets succeed.
+
 ### Task 3: Finish your ExportLicensePlates function code and push changes to GitHub to trigger deployment
 
 1. Return to the LabVM and within Visual Studio navigate to the **TollBooth** project using the Solution Explorer.
