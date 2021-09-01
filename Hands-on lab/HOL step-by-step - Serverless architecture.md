@@ -186,9 +186,9 @@ In this task, you create an RDP connection to your Lab virtual machine (VM).
    - `TollBooth`
    - `UploadImages`
 
-> **Note**: The UploadImages project is used for uploading a handful of car photos for testing the scalability of the serverless architecture.
-
-   ![The two projects listed above are highlighted in Solution Explorer.](media/visual-studio-solution-explorer-projects.png 'Solution Explorer')
+ ![](images/Tollbooth&UploadImages.png 'Solution Explorer')
+ 
+ > **Note**: The UploadImages project is used for uploading a handful of car photos for testing the scalability of the serverless architecture.
 
 7. To validate connectivity to your Azure subscription from Visual Studio, open **Cloud Explorer** from the **View** menu.
 
@@ -277,21 +277,25 @@ In this task, you will publish the Function App from the starter project in Visu
 
 3. In the Publish window, select **Azure**, then select **Next**.
 
-    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](images/image13.png 'Publish window')
+    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](images/vs-publish-function0.png 'Publish window')
 
 > **Note**: If you do not see the ability to publish to an Azure Function, you may need to update your Visual Studio instance.
 
-4. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **hands-on-lab-SUFFIX** resource group and select the Function App whose name ends with **FunctionApp**. Finally, **uncheck the `Run from package file` option**.
+4. Select **Azure Function App [Windows]** and click **Next**.
 
-5. Whatever you named the Function App when you provisioned it is okay. Just make sure it is the same one to which you applied the Application Settings in Task 1 of this exercise.
+    ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. The Select Existing radio button is selected in the right pane, and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](images/vs-publish-function11.png 'Publish window')
+    
+5. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **hands-on-lab-SUFFIX** resource group and select the Function App whose name ends with **FunctionApp**. Finally, **uncheck the `Run from package file` option**.
+
+6. Whatever you named the Function App when you provisioned it is okay. Just make sure it is the same one to which you applied the Application Settings in Task 1 of this exercise.
 
     ![In the App Service form, Resource Group displays in the View field, and in the tree-view below, the hands-on-lab-SUFFIX folder is expanded, and TollBoothFunctionApp is selected.](images/image14.png 'Publish window')
 
     > **Important**: We do not want to run from a package file because when we deploy from GitHub later on, the build process will be skipped if the Function App is configured for a zip deployment.
 
-6. After you select the Function App, select **Finish**.
+7. After you select the Function App, select **Finish**.
 
-7. Select **Publish** to start the process. Watch the Output window in Visual Studio as the Function App publishes. When it is finished, you should see a message that says, `========== Publish: 1 succeeded, 0 failed, 0 skipped ==========`.
+8. Select **Publish** to start the process. Watch the Output window in Visual Studio as the Function App publishes. When it is finished, you should see a message that says, `========== Publish: 1 succeeded, 0 failed, 0 skipped ==========`.
 
    > **Note**: If prompted to update the version of the function on Azure, select **Yes**.
 
@@ -299,23 +303,23 @@ In this task, you will publish the Function App from the starter project in Visu
     
     ![The Publish button is selected.](images/image16.png "Publish")
 
-8. Using a new tab or instance of your browser, navigate to the Azure portal, <http://portal.azure.com>.
+9. Using a new tab or instance of your browser, navigate to the Azure portal, <http://portal.azure.com>.
 
-9. Open the **hands-on-lab-SUFFIX** resource group, then select the **TollBoothFunctions** Azure Function App, to which you just published.
+10. Open the **hands-on-lab-SUFFIX** resource group, then select the **TollBoothFunctions** Azure Function App, to which you just published.
 
     ![](images/image17.png)
 
-10. Select **Functions** in the left-hand navigation menu. You should see both functions you just published from the Visual Studio solution listed.
+11. Select **Functions** in the left-hand navigation menu. You should see both functions you just published from the Visual Studio solution listed.
 
     ![In the Function Apps blade, in the left tree-view, both TollBoothFunctionApp and Functions (Read Only) are expanded. Beneath Functions (Read Only), two functions ExportLicensePlates and ProcessImage are highlighted.](images/image18.png 'TollBoothFunctionApp blade')
 
-11. Now, we need to add an Event Grid subscription to the ProcessImage function, so the function is triggered when new images are added to the data lake storage container. 
+12. Now, we need to add an Event Grid subscription to the ProcessImage function, so the function is triggered when new images are added to the data lake storage container. 
 
-12. Open the **ProcessImage** function, click on **Integration(1)** on the left-hand menu, select **Event Grid Trigger(eventGridEvent)(2)**, and then select **Create Event Grid subscription(3)**.
+13. Open the **ProcessImage** function, click on **Integration(1)** on the left-hand menu, select **Event Grid Trigger(eventGridEvent)(2)**, and then select **Create Event Grid subscription(3)**.
 
     ![In the TollboothFunctionApp tree-view, the ProcessImage function is selected. In the code window pane, the Add Event Grid subscription link is highlighted.](images/image19.png 'ProcessImage function')
 
-13. On the **Create Event Subscription** blade, specify the following configuration options:
+14. On the **Create Event Subscription** blade, specify the following configuration options:
 
     - **Name**: Enter **processimagesub-**<inject key="DeploymentID" />** (ensure the green check mark appears).
     - **Event Schema**: Select **Event Grid Schema**.
@@ -333,7 +337,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
     ![In the Create event subscription form, the fields are set to the previously defined values.](images/image21.png)
 
-14. Select **Create**.
+15. Select **Create**.
 
 ![In the Create event subscription form, the fields are set to the previously defined values.](images/image22.png)
 
@@ -361,15 +365,15 @@ In this task, you will create a new Node.js function triggered by Event Grid and
 
     ![The Publish button is selected.](images/image23.png "Publish")
 
-3. Select **Functions** in the left-hand menu, then select **+ Add**.
+3. Select **Functions** in the left-hand menu, then select **+ Create**.
 
-    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](images/image24.png 'TollBoothEvents blade')
+    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](media/TL-events1.png 'TollBoothEvents blade')
 
 4. Enter **event grid** into the **Select a template** filter box, select the **Azure Event Grid trigger** template, and then enter `SavePlateData` into the **New Function** name field.
 
-    ![In the Add function dialog, event grid is entered into the filter box, the Azure Event Grid trigger template is selected and highlighted, and SavePlateData is entered in the Name field and highlighted.](media/new-function-save-plate-data.png "Add function form")
+    ![In the Add function dialog, event grid is entered into the filter box, the Azure Event Grid trigger template is selected and highlighted, and SavePlateData is entered in the Name field and highlighted.](media/saveplatedata.png "Add function form")
 
-5. Select **Add**.
+5. Select **Create**.
 
 6. On the **SavePlateData** Function blade, select **Code + Test** from the left-hand menu and replace the code in the new `SavePlateData` function's `index.js` file with the following:
 
@@ -433,9 +437,9 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 3. Scroll down in the Create Output form, select **New** under the **Cosmos DB account connection** field.
 
+ ![A message is displayed indicating the Cosmos DB Extensions are not installed. The Install link is selected.](media/cosmos-extension-install.png 'Cosmos DB Extensions not installed')
+ 
 > **Note**: If you see a notice for "Extensions not installed," select **Install** and wait for the extension installation to complete before proceeding.
-
-    ![A message is displayed indicating the Cosmos DB Extensions are not installed. The Install link is selected.](media/cosmos-extension-install.png 'Cosmos DB Extensions not installed')
 
 4. Select your Cosmos DB account in the Cosmos DB account connection list and then select **OK**.
 
@@ -453,15 +457,15 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 In this task, you will create another new function triggered by Event Grid and outputs information about photos that need to be manually verified to Azure Cosmos DB.
 
-1. Select **Functions** in the left-hand menu, then select **+ Add**.
+1. Select **Functions** in the left-hand menu, then select **+ Create**.
 
-    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](media/functions-new.png 'TollBoothEvents blade')
+    ![In the Function Apps blade, the TollBoothEvents application is selected. In the Overview tab, the + New function button is selected.](media/TL-events2.png 'TollBoothEvents blade')
 
 2. Enter **event grid** into the **Select a template** filter box, select the **Azure Event Grid trigger** template, and then enter `QueuePlateForManualCheckup` into the **New Function** name field.
 
-    ![In the Add function dialog, event grid is entered into the filter box. The Azure Event Grid trigger template is selected and highlighted, and QueuePlateForManualCheckup is entered in the Name field and highlighted.](media/new-function-manual-checkup.png "Add function form")
+    ![In the Add function dialog, event grid is entered into the filter box. The Azure Event Grid trigger template is selected and highlighted, and QueuePlateForManualCheckup is entered in the Name field and highlighted.](media/queueplateformanualcheckup.png "Add function form")
 
-3. Select **Add**.
+3. Select **Create**.
 
 4. On the **QueuePlateForManualCheckup** Function blade, select **Code + Test** from the left-hand menu and replace the code in the new `QueuePlateForManualCheckup` function's `index.js` file with the following:
 
@@ -753,7 +757,7 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
 16. Select **Run** to execute the Logic App. You should start receiving email alerts because the license plate data is not being exported. This is because we need to finish making changes to the ExportLicensePlates function to extract the license plate data from Azure Cosmos DB, generate the CSV file, and upload it to Blob storage.
 
-    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logicapp-start.png 'Logic Apps Designer blade')
+    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logicappdesigner.png 'Logic Apps Designer blade')
 
 17. While in the Logic Apps Designer, you will see the run result of each step of your workflow. A green checkmark is placed next to each step that successfully executed, showing the execution time to complete. This can be used to see how each step is working, and you can select the executed step and see the raw output.
 
@@ -826,7 +830,7 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 12. Refresh your GitHub repository page in your browser. You should see that the project files have been added. Navigate to the **TollBooth** folder of your repo. Notice that the local.settings.json file has not been uploaded. That's because the .gitignore file of the TollBooth project explicitly excludes that file from the repository, making sure you don't accidentally share your application secrets.
 
-    ![On the GitHub Repository webpage for serverless-architecture-lab, on the Code tab, the project files are displayed.](media/github-repo-page.png 'GitHub Repository page')
+    ![On the GitHub Repository webpage for serverless-architecture-lab, on the Code tab, the project files are displayed.](media/github-repo.png 'GitHub Repository page')
 
 ### Task 2: Configure your Function App to use your GitHub repository for continuous deployment
 
@@ -836,37 +840,41 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 2. On your resource group blade, select the **TollBoothFunctions** Function App resource in the resource group's list of services available.
 
-3. Select **Deployment Center** under Deployment in the left-hand navigation menu.
+3. Select **Deployment Center(1)** under Deployment in the left-hand navigation menu and next select **Settings(2)**.Select the Source drop-down list and choose **GitHub(3)** from the list. 
 
-    ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](media/functionapp-menu-deployment-center-link.png 'TollBoothFunctions blade')
+    ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](media/TBF-Deploymentcenter.png 'TollBoothFunctions blade')
 
-4. Select **Go to Settings**.
-
-    ![The Go to Settings button is highlighted on the Deployment Center blade.](media/go-to-settings-ci-cd.png "Go to Settings")
-
-5. Select the **Source** drop-down list and choose **GitHub** from the list.
-
-    ![GitHub is highlighted in the select code source drop-down list.](media/deployment-center-select-code-source.png "Select code source")
-
-6. Select **Authorize** and enter your GitHub credentials.
+4. Select **Authorize** and enter your GitHub credentials.
 
     ![The Authorize button is highlighted under GitHub in the Deployment Center.](media/deployment-center-github-authorize.png "GitHub Authorize")
 
-7. On the Authorize Azure App Service page, select **Authorize AzureAppService** and enter your password if prompted.
+5. On the Authorize Azure App Service page, select **Authorize AzureAppService** and enter your password if prompted.
 
     ![The Authorize Azure App Service button is highlighted.](media/authorize-azure-app-service.png "Authorize Azure App Service")
 
-8. After your account authorizes, you can configure the following to connect to your GitHub repo:
+6. After your account authorizes, you can configure the following to connect to your GitHub repo:
 
     - **Organization**: Select the GitHub account organization in which you created the repo.
     - **Repository**: Select the **serverless-architecture-lab**, or whatever name you chose for the repo.
     - **Branch**: Select **master**.
-    - **Runtime stack**: Leave set to .NET.
-    - **Version**: Leave set to .NET Core 3.1.
 
-    ![The GitHub settings specified above are entered into the Settings dialog.](media/deployment-center-github-settings.png "GitHub settings")
+    ![The GitHub settings specified above are entered into the Settings dialog.](media/TBL-settings.png "GitHub settings")
 
-9. Select **Save**.
+7. Select **Save**.
+
+   > **Note**: Navigate to **Github** and select **Actions** tab to confirm the Build and deploy dotnet core app to Azure Function App to Add or update the App Service is **Success**.
+   
+   ![To confirm the Build and deploy dotnet core app to Azure Function App to Add or update the App Service is Success.](media/Build&Deploy-Success.png "GitHub Settings")
+  
+8. If the Build and deploy dotnet core app to Azure Function App to Add or update the App Service is **Failure** in GitHub. Then click on eclipse **...(1)** and select **View workflow file(2)**. Need to update with available Dotnet version.
+
+   ![Build and deploy dotnet core app to Azure Function App to Add or update the App Service is Failure.](media/Build&Deploy-Failure.png "GitHub Settings")
+   
+9. Click the **Edit** option at the Right-Top of the workflow file. In Line Number 14, update the **DOTNET_VERSION: 'v4.0'** to **DOTNET_VERSION: '3.1.201'** (1) and click on **Start commit(2)** and next select **Commit changes(3)**.
+
+   ![Edit the workflow file with DOTNET_VERSION: '3.1.201' and commit the changes.](media/Build&Deploy-Edit.png "GitHub Settings")
+   
+10. Go to **Actions** and check the updated workflow gets succeed.
 
 ### Task 3: Finish your ExportLicensePlates function code and push changes to GitHub to trigger deployment
 
@@ -935,9 +943,9 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
     ![The message is displayed.](media/vs-git-push-success.png "Successfully pushed")
 
-16. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
+16. Go back to **Deployment Center(1)** for your Function App in the portal and select **Logs(2)**. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
 
-    ![The latest deployment is displayed in the Deployment Center.](media/functionapp-dc-latest.png 'Deployment Center')
+    ![The latest deployment is displayed in the Deployment Center.](media/TBF-logs.png 'Deployment Center')
 
 ## Exercise 7: Rerun the workflow and verify data export
 
@@ -953,9 +961,9 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
     ![In the TollBoothLogic Logic app blade, Overview is selected in the left menu, and the Enable enable button is selected in the right pane.](media/image113.png 'TollBoothLogic blade')
 
-3. Now select **Run Trigger**, then select **Recurrence** to execute your workflow immediately.
+3. Select **Logic App Designer(1)** under Deployment Tools. Now select **Run Trigger(2)**, then select **Run(3)** to execute your workflow.
 
-    ![In the TollBoothLogic Logic app blade, Run Trigger and Recurrence are selected.](media/image114.png 'TollBoothLogic blade')
+    ![In the TollBoothLogic Logic app blade, Run Trigger and Recurrence are selected.](media/logicappdesigner-run.png 'TollBoothLogic blade')
 
 4. Select the **Refresh** button next to the Run Trigger button to refresh your run history. Select the latest run history item. If the expression result for the condition is **true**, then that means the CSV file should've been exported to data lake storage. Be sure to disable the Logic App, so it doesn't keep sending you emails every 15 minutes. Please note that it may take longer than expected to start running in some cases.
 
