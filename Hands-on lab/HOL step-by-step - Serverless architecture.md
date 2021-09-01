@@ -931,7 +931,7 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 16. Go back to **Deployment Center(1)** for your Function App in the portal and select **Logs(2)**. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
 
-    ![The latest deployment is displayed in the Deployment Center.](media/TBL-logs.png 'Deployment Center')
+    ![The latest deployment is displayed in the Deployment Center.](media/TBF-logs.png 'Deployment Center')
 
 ## Exercise 7: Rerun the workflow and verify data export
 
