@@ -757,7 +757,7 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
 16. Select **Run** to execute the Logic App. You should start receiving email alerts because the license plate data is not being exported. This is because we need to finish making changes to the ExportLicensePlates function to extract the license plate data from Azure Cosmos DB, generate the CSV file, and upload it to Blob storage.
 
-    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logicapp-start.png 'Logic Apps Designer blade')
+    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logicappdesigner.png 'Logic Apps Designer blade')
 
 17. While in the Logic Apps Designer, you will see the run result of each step of your workflow. A green checkmark is placed next to each step that successfully executed, showing the execution time to complete. This can be used to see how each step is working, and you can select the executed step and see the raw output.
 
@@ -830,7 +830,7 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 12. Refresh your GitHub repository page in your browser. You should see that the project files have been added. Navigate to the **TollBooth** folder of your repo. Notice that the local.settings.json file has not been uploaded. That's because the .gitignore file of the TollBooth project explicitly excludes that file from the repository, making sure you don't accidentally share your application secrets.
 
-    ![On the GitHub Repository webpage for serverless-architecture-lab, on the Code tab, the project files are displayed.](media/github-repo-page.png 'GitHub Repository page')
+    ![On the GitHub Repository webpage for serverless-architecture-lab, on the Code tab, the project files are displayed.](media/github-repo.png 'GitHub Repository page')
 
 ### Task 2: Configure your Function App to use your GitHub repository for continuous deployment
 
@@ -840,37 +840,27 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 2. On your resource group blade, select the **TollBoothFunctions** Function App resource in the resource group's list of services available.
 
-3. Select **Deployment Center** under Deployment in the left-hand navigation menu.
+3. Select **Deployment Center(1)** under Deployment in the left-hand navigation menu and next select **Settings(2)**.Select the Source drop-down list and choose **GitHub(3)** from the list. 
 
-    ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](media/functionapp-menu-deployment-center-link.png 'TollBoothFunctions blade')
+    ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](media/TBF-Deploymentcenter.png 'TollBoothFunctions blade')
 
-4. Select **Go to Settings**.
-
-    ![The Go to Settings button is highlighted on the Deployment Center blade.](media/go-to-settings-ci-cd.png "Go to Settings")
-
-5. Select the **Source** drop-down list and choose **GitHub** from the list.
-
-    ![GitHub is highlighted in the select code source drop-down list.](media/deployment-center-select-code-source.png "Select code source")
-
-6. Select **Authorize** and enter your GitHub credentials.
+4. Select **Authorize** and enter your GitHub credentials.
 
     ![The Authorize button is highlighted under GitHub in the Deployment Center.](media/deployment-center-github-authorize.png "GitHub Authorize")
 
-7. On the Authorize Azure App Service page, select **Authorize AzureAppService** and enter your password if prompted.
+5. On the Authorize Azure App Service page, select **Authorize AzureAppService** and enter your password if prompted.
 
     ![The Authorize Azure App Service button is highlighted.](media/authorize-azure-app-service.png "Authorize Azure App Service")
 
-8. After your account authorizes, you can configure the following to connect to your GitHub repo:
+6. After your account authorizes, you can configure the following to connect to your GitHub repo:
 
     - **Organization**: Select the GitHub account organization in which you created the repo.
     - **Repository**: Select the **serverless-architecture-lab**, or whatever name you chose for the repo.
     - **Branch**: Select **master**.
-    - **Runtime stack**: Leave set to .NET.
-    - **Version**: Leave set to .NET Core 3.1.
 
-    ![The GitHub settings specified above are entered into the Settings dialog.](media/deployment-center-github-settings.png "GitHub settings")
+    ![The GitHub settings specified above are entered into the Settings dialog.](media/TBL-settings.png "GitHub settings")
 
-9. Select **Save**.
+7. Select **Save**.
 
 ### Task 3: Finish your ExportLicensePlates function code and push changes to GitHub to trigger deployment
 
@@ -939,9 +929,9 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
     ![The message is displayed.](media/vs-git-push-success.png "Successfully pushed")
 
-16. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
+16. Go back to **Deployment Center(1)** for your Function App in the portal and select **Logs(2)**. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
 
-    ![The latest deployment is displayed in the Deployment Center.](media/functionapp-dc-latest.png 'Deployment Center')
+    ![The latest deployment is displayed in the Deployment Center.](media/TBL-logs.png 'Deployment Center')
 
 ## Exercise 7: Rerun the workflow and verify data export
 
@@ -957,9 +947,9 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
     ![In the TollBoothLogic Logic app blade, Overview is selected in the left menu, and the Enable enable button is selected in the right pane.](media/image113.png 'TollBoothLogic blade')
 
-3. Now select **Run Trigger**, then select **Recurrence** to execute your workflow immediately.
+3. Select **Logic App Designer(1)** under Deployment Tools. Now select **Run Trigger(2)**, then select **Run(3)** to execute your workflow.
 
-    ![In the TollBoothLogic Logic app blade, Run Trigger and Recurrence are selected.](media/image114.png 'TollBoothLogic blade')
+    ![In the TollBoothLogic Logic app blade, Run Trigger and Recurrence are selected.](media/logicappdesigner-run.png 'TollBoothLogic blade')
 
 4. Select the **Refresh** button next to the Run Trigger button to refresh your run history. Select the latest run history item. If the expression result for the condition is **true**, then that means the CSV file should've been exported to data lake storage. Be sure to disable the Logic App, so it doesn't keep sending you emails every 15 minutes. Please note that it may take longer than expected to start running in some cases.
 
