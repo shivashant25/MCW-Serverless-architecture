@@ -54,6 +54,6 @@ Duration: 10 mins
 
 13. Click on the **hands-on-lab-<inject key="DeploymentID" enableCopy="false"/>** Resource group and confirm whether you have all the below resources deployed successfully.
 
-   ![](media/portal_resources.PNG "Resource groups")
+   ![](media/rg-tab.png "Resource groups")
    
 14. Now, click on the **Next** from lower right corner to move on next page.
