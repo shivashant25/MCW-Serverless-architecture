@@ -239,7 +239,7 @@
         "enableAnalyticalStorage": false,
         "enableMultipleWriteLocations": false,
         "networkAclBypass": "AzureServices",
-        "publicNetworkAccess": "Disabled"
+        "publicNetworkAccess": "Enabled"
       },
       "resources": [
         {
@@ -318,7 +318,19 @@
       "properties": {
         "definition": {
           "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-          "contentVersion": "1.0.0.0"
+          "contentVersion": "1.0.0.0",
+          "parameters":{
+             
+          },
+          "actions":{
+             
+          },
+          "triggers":{
+             
+          },
+          "outputs":{
+             
+          }
         },
         "parameters": {}
       }
@@ -385,7 +397,7 @@
             },
             {
               "name": "WEBSITE_CONTENTSHARE",
-              "value": "[variables('dataLakeAccountName')]"
+              "value": "[concat(variables('dataLakeAccountName'), 'functions')]"
             },
             {
               "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
@@ -488,7 +500,7 @@
             },
             {
               "name": "WEBSITE_CONTENTSHARE",
-              "value": "[variables('dataLakeAccountName')]"
+              "value": "[concat(variables('dataLakeAccountName'), 'events')]"
             },
             {
               "name": "WEBSITE_NODE_DEFAULT_VERSION",
