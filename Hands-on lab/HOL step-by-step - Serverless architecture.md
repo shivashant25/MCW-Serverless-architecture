@@ -789,7 +789,7 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
     ![The Visual Studio Git Global Settings page is displayed with the user name and email fields highlighted.](media/git-global-settings.png "Git Global Settings")
 
-> **Note:** Add your own GitHub account details for GitHub related tasks in the lab.
+> **Note:** Please note that you need to use your own GitHub account in the lab, If you dont have any GitHub account then you can go to [GitHub](https://github.com) and signup with your personal email address. The lab credentials will not work here in the GitHub Account. 
 
 3. Next, look below the Solution Explorer and select the **Git Changes** tab.
 
