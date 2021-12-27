@@ -32,10 +32,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Solution architecture](#solution-architecture)
   - [Requirements](#requirements)
   - [Exercise 1: Develop and publish the photo processing and data export functions](#exercise-1-develop-and-publish-the-photo-processing-and-data-export-functions)
-    - [Task 1: Connect to the Lab VM](#task-1-connect-to-the-lab-vm)
-    - [Task 2: Open the starter solution in Visual Studio](#task-2-open-the-starter-solution-in-visual-studio)
-    - [Task 3: Finish the ProcessImage function](#task-3-finish-the-processimage-function)
-    - [Task 4: Publish the Function App from Visual Studio](#task-4-publish-the-function-app-from-visual-studio)
+    - [Task 1: Open the starter solution in Visual Studio](#task-1-open-the-starter-solution-in-visual-studio)
+    - [Task 2: Finish the ProcessImage function](#task-2-finish-the-processimage-function)
+    - [Task 3: Publish the Function App from Visual Studio](#task-3-publish-the-function-app-from-visual-studio)
   - [Exercise 2: Create functions in the portal](#exercise-2-create-functions-in-the-portal)
     - [Task 1: Create a function to save license plate data to Azure Cosmos DB](#task-1-create-a-function-to-save-license-plate-data-to-azure-cosmos-db)
     - [Task 2: Add an Event Grid subscription to the SavePlateData function](#task-2-add-an-event-grid-subscription-to-the-saveplatedata-function)
@@ -112,46 +111,7 @@ Use Visual Studio and its integrated Azure Functions tooling to develop and debu
 | **Description**                       | **Link**                                                              |
 | Code and test Azure Functions locally | <https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-local> |
 
-### Task 1: Connect to the Lab VM
-
-In this task, you create an RDP connection to your Lab virtual machine.
-
-1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
-
-   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
-
-2. Select the **hands-on-lab-SUFFIX** resource group from the list.
-
-   ![The "hands-on-lab-SUFFIX" resource group is highlighted.](media/resource-groups.png "Resource groups list")
-
-3. In the list of resources within your resource group, select the **LabVM Virtual machine** resource.
-
-   ![The list of resources in the hands-on-lab-SUFFIX resource group are displayed, and LabVM is highlighted.](media/resource-group-resources-labvm.png "LabVM in resource group list")
-
-4. On your LabVM blade, select **Connect** and **RDP** from the top menu.
-
-   ![The LabVM blade is displayed, with the Connect button highlighted in the top menu.](media/connect-vm-rdp.png "Connect to Lab VM")
-
-5. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
-
-   ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](media/connect-to-virtual-machine.png "Connect to virtual machine")
-
-6. Select **Connect** on the Remote Desktop Connection dialog.
-
-   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](media/remote-desktop-connection.png "Remote Desktop Connection dialog")
-
-7. Enter the following credentials when prompted, and then select **OK**:
-
-   - **User name**: demouser
-   - **Password**: Password.1!!
-
-   ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
-
-8. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
-
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is highlighted.](media/remote-desktop-connection-identity-verification-labvm.png "Remote Desktop Connection dialog")
-
-### Task 2: Open the starter solution in Visual Studio
+### Task 1: Open the starter solution in Visual Studio
 
 1. On the LabVM, open File Explorer and navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-main\Hands-on lab\lab-files\src\TollBooth`.
 
@@ -165,9 +125,15 @@ In this task, you create an RDP connection to your Lab virtual machine.
 
    ![Visual Studio 2019 is highlighted in the How do you want to open this file? dialog.](media/solution-file-open-with.png "Visual Studio 2019")
 
-4. Sign in to Visual Studio using your Azure account credentials.
+4. Click on the **Sign in** button and paste your Azure account credentials given below:
 
-   ![The Sign in button is highlighted on the Visual Studio Welcome screen.](media/visual-studio-sign-in.png "Visual Studio 2019")
+   - Username: **<inject key="AzureAdUserEmail" />** and click on **Next**.
+
+    ![](media/image2.png)
+
+   - Password: **<inject key="AzureAdUserPassword" />** and click on **Sign in**.
+
+    ![](media/image3.png)
 
 5. If prompted with a security warning, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
@@ -188,7 +154,7 @@ In this task, you create an RDP connection to your Lab virtual machine.
 
 8. Return to the open File Explorer window and navigate back to the **src** subfolder. From there, open the **license plates** subfolder. It contains sample license plate photos used for testing out the solution. One of the images is guaranteed to fail OCR processing, which is meant to show how the workload is designed to handle such failures. The UploadImages project uses the **copyfrom** folder as a basis for the 1,000-photo upload option for testing scalability.
 
-### Task 3: Finish the ProcessImage function
+### Task 2: Finish the ProcessImage function
 
 A few components within the starter project must be completed, which are marked as `TODO` in the code. The first set of `TODO` items we address are in the `ProcessImage` function. We will update the `FindLicensePlateText` class that calls the Computer Vision service and the `SendToEventGrid` class, which is responsible for sending processing results to the Event Grid topic you created earlier.
 
@@ -257,7 +223,7 @@ A few components within the starter project must be completed, which are marked 
 
     > **Note**: `TODOs` 5, 6, and 7 will be completed in later steps of the guide.
 
-### Task 4: Publish the Function App from Visual Studio
+### Task 3: Publish the Function App from Visual Studio
 
 In this task, you will publish the Function App from the starter project in Visual Studio to the existing Function App you provisioned in Azure.
 
@@ -313,7 +279,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
 12. On the **Create Event Subscription** blade, specify the following configuration options:
 
-    - **Name**: Enter a unique value, similar to **processimagesub** (ensure the green check mark appears).
+    - **Name**: **Name**: Enter **processimagesub-<inject key="DeploymentID" />** (ensure the green check mark appears).
     - **Event Schema**: Select **Event Grid Schema**.
     - **Topic Type**: Select **Storage Accounts (Blob & GPv2)**.
     - **Subscription**: Select the subscription you are using for this hands-on lab.
