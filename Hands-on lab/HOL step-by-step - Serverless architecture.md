@@ -54,8 +54,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 2: Configure your Function App to use your GitHub repository for continuous deployment](#task-2-configure-your-function-app-to-use-your-github-repository-for-continuous-deployment)
     - [Task 3: Finish your ExportLicensePlates function code and push changes to GitHub to trigger deployment](#task-3-finish-your-exportlicenseplates-function-code-and-push-changes-to-github-to-trigger-deployment)
   - [Exercise 7: Rerun the workflow and verify data export](#exercise-7-rerun-the-workflow-and-verify-data-export)
-    - [Task 1: Run the Logic App](#task-1-run-the-logic-app)
-    - [Task 2: View the exported CSV file](#task-2-view-the-exported-csv-file)
+    - [Task 1: Rerun Upload Images](#task-1-rerun-upload-images)
+    - [Task 2: Run the Logic App](#task-2-run-the-logic-app)
+    - [Task 3: View the exported CSV file](#task-3-view-the-exported-csv-file)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete the resource group in which you placed your Azure resources](#task-1-delete-the-resource-group-in-which-you-placed-your-azure-resources)
     - [Task 2: Delete the GitHub repo](#task-2-delete-the-github-repo)
@@ -842,19 +843,19 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 11. On the YML file screen, select the pencil icon to edit the document inline.
 
-    ![The YML file screen displays with the pencil icon highlighted.](media/edit_yml_file_menu.png "YML file")
+    ![The YML file screen displays with the pencil icon highlighted.](media/edit_yml_file_menu_main.png "YML file")
 
 12. On line 14, change the **DOTNET_VERSION** value to **'3.1.x'**. Be sure not to edit the structure of this file, **ONLY** change the value. Then select **Start commit**.
 
-    ![The YML file screen displays an editor with the DOTNET_VERSION value changed to 3.1.x, the Start commit button is highlighted.](media/yml_edit_dotnetversion.png "Editing a YML file")
+    ![The YML file screen displays an editor with the DOTNET_VERSION value changed to 3.1.x, the Start commit button is highlighted.](media/yml_edit_dotnetversion_main.png "Editing a YML file")
 
 13. In the **Commit changes** dialog, enter the comment **Changed .NET version**, then select **Commit changes**.
 
-    ![The Commit changes dialog displays with the Changed .NET version comment and the Commit changes button highlighted.](media/yml_commit_changes.png "Commit changes dialog")
+    ![The Commit changes dialog displays with the Changed .NET version comment and the Commit changes button highlighted.](media/yml_commit_changes_main.png "Commit changes dialog")
 
 14. Committing the YML file update will trigger a new deployment that will succeed. You can see the status of the currently running or past workflows on the Actions tab of the repository.
 
-    ![A successful deployment workflow displays.](media/successful_workflow_execution.png "Successful workflow run")
+    ![A successful deployment workflow displays.](media/successful_workflow_execution_main.png "Successful workflow run")
 
 ### Task 3: Finish your ExportLicensePlates function code and push changes to GitHub to trigger deployment
 
@@ -911,11 +912,11 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 13. Enter a commit message, then select **Commit All**.
 
-    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](media/vs-git-commit-all.png 'Team Explorer - Changes window')
+    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](media/vs-git-commit-all-main.png 'Team Explorer - Changes window')
 
 14. After committing, select the **Push** button to push your changes to the GitHub repo.
 
-    ![The Push button is highlighted.](media/vs-git-push.png "Push changes")
+    ![The Push button is highlighted.](media/vs-git-push-main.png "Push changes")
 
     > **Note**: You may receive a message that your local copy is behind the remote branch.
     > ![Git - Push failed dialog appears.](media/git-push-failed.png)
@@ -924,7 +925,7 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 15. You should see a message stating that you successfully pushed your changes to the GitHub repository.
 
-    ![The message is displayed.](media/vs-git-push-success.png "Successfully pushed")
+    ![The message is displayed.](media/vs-git-push-success-main.png "Successfully pushed")
 
 16. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
 
@@ -936,7 +937,13 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 With the latest code changes in place, run your Logic App and verify that the files are successfully exported.
 
-### Task 1: Run the Logic App
+### Task 1: Rerun Upload Images
+
+1. In Visual Studio, right-click the **UploadImages** project in the Solution Explorer. Select **Debug**, then **Start New Instance** from the context menu.
+
+2. When the console window appears, enter `2` and press **ENTER**. This action uploads a handful of car photos to the images container of your Blob storage account.  This should get data to trigger the ExportLicensePlates function.
+
+### Task 2: Run the Logic App
 
 1. Open your **hands-on-lab-SUFFIX** resource group in the Azure portal, then select your **logicapp** Logic App resource from the list.
 
@@ -952,7 +959,7 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
     ![In Logic App Designer, in the Condition section, under Inputs, true is highlighted.](media/image115.png 'Logic App Designer ')
 
-### Task 2: View the exported CSV file
+### Task 3: View the exported CSV file
 
 1. Open your **hands-on-lab-SUFFIX** resource group in the Azure portal, then select the **datalake** Storage account resource you provisioned to store uploaded photos and exported CSV files.
 
