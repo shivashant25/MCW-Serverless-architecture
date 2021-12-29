@@ -957,6 +957,8 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 4. Select the **Refresh** button next to the Run Trigger button to refresh your run history. Select the latest run history item. If the expression result for the condition is **true**, then that means the CSV file should've been exported to data lake storage. Be sure to disable the Logic App, so it doesn't keep sending you emails every 15 minutes. Please note that it may take longer than expected to start running in some cases.
 
+   >**Note :** Even if the expression result for the condition is **false**, you should be able to export the CSV file to data lake storage account.
+
     ![In Logic App Designer, in the Condition section, under Inputs, true is highlighted.](media/image115.png 'Logic App Designer ')
 
 ### Task 3: View the exported CSV file
