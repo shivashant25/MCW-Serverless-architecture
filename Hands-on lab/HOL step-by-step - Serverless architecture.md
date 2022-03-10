@@ -175,7 +175,7 @@ A few components within the starter project must be completed, which are marked 
 
     > Notice the Run method is decorated with the **FunctionName** attribute, which sets the name of the Azure Function to `ProcessImage`. This is triggered by HTTP requests sent to it from the Event Grid service. You tell Event Grid that you want to get these notifications at your function's URL by creating an event subscription, which you will do in a later task, in which you subscribe to blob-created events. The function's trigger watches for new blobs being added to the images container of the data lake storage account that was created by the ARM template in the Before the hands-on lab guide. The data passed to the function from the Event Grid notification includes the URL of the blob. That URL is, in turn, passed to the input binding to obtain the uploaded image from data lake storage.
 
-    ![The ProcessImage.cs file is highlighted within the TollBooth project in the Visual Studio Solution Explorer.](media/visual-studio-solution-explorer-process-image.png "Solution Explorer")
+    ![The ProcessImage.cs file is highlighted within the TollBooth project in the Visual Studio Solution Explorer.](media/select-process-image.png "Solution Explorer")
 
 4. In the **Task List** pane at the bottom of the Visual Studio window, double-click the `TODO 1` item, which will take you to the first `TODO` task.
 
@@ -561,11 +561,11 @@ In this task, you will change the Computer Vision API to the Free tier. This wil
 
     ![The computervision Computer vision resource is highlighted in the list of services in the resource group.](media/resource-group-computer-vision-resource.png "Resource group")
 
-2. Select **Pricing tier** under **Resource Management** in the menu. Select the **F0 Free** pricing tier, then choose **Select**.
+2. Select **Pricing tier**(1) under **Resource Management** in the menu. Select the **F0 Free**(2) pricing tier, then select **Apply**(3).
 
     > **Note**: If you already have an **F0** free pricing tier instance, you will not be able to create another one.
 
-    ![In the Cognitive Services blade, under Resource Management, the Pricing tier item is selected. In the Choose your pricing tier blade, the F0 Free option is selected.](media/image73.png 'Choose your pricing tier blade')
+    ![In the Cognitive Services blade, under Resource Management, the Pricing tier item is selected. In the Choose your pricing tier blade, the F0 Free option is selected.](media/computervision-pricing-tier.png 'Choose your pricing tier blade')
 
 3. Switch to Visual Studio, debug the **UploadImages** project again, then enter **2** and press **ENTER**. This will upload 1,000 new photos.
 
@@ -608,7 +608,7 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 
 3. On the Cosmos DB blade, select **Data Explorer** from the left-hand navigation menu.
 
-    ![In the Data Explorer blade, Data Explorer is selected from the left menu.](media/data-explorer-link.png 'Data Explorer')
+    ![In the Data Explorer blade, Data Explorer is selected from the left menu.](media/cosmosdb-data-explorer.png 'Data Explorer')
 
 4. Expand the **LicensePlates** database and then the **Processed** collection and select **Items**. This will list each of the JSON documents added to the collection.
 
@@ -624,17 +624,17 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 
 8. Select the ellipses (...) next to the **Processed** collection and select **New SQL Query**.
 
-    ![In the tree-view beneath the LicensePlates Cosmos DB, the Processed collection is selected. From its right-click context menu, New SQL Query is selected.](media/data-explorer-new-sql-query.png 'Data Explorer')
+    ![In the tree-view beneath the LicensePlates Cosmos DB, the Processed collection is selected. From its right-click context menu, New SQL Query is selected.](media/cosmosdb-processed-sqlquery.png 'Data Explorer')
 
-9. Paste the SQL query below into the query window. This query counts the number of processed documents that have not been exported:
+9. Paste the SQL query below into the query window (1). This query counts the number of processed documents that have not been exported:
 
     ```sql
     SELECT VALUE COUNT(1) FROM c WHERE c.exported = false
     ```
 
-10. Execute the query and observe the results. In our case, we have 669 processed documents that need to be exported.
+10. Execute the query (2) and observe the results (3). In our case, we have 906 processed documents that need to be exported.
 
-    ![In the Query window, the previously defined SQL query displays. Under Results, the number 669 is highlighted.](media/cosmos-query-results.png 'Query 1 tab')
+    ![In the Query window, the previously defined SQL query displays. Under Results, the number 906 is highlighted.](media/execute-query-cosomosdb.png 'Query 1 tab')
 
 ## Exercise 5: Create the data export workflow
 
@@ -660,7 +660,7 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
 3. In the **Logic App Designer**, scroll through the page until you locate the _Start with a common trigger_ section. Select the **Recurrence** trigger.
 
-    ![The Recurrence tile is selected in the Logic App Designer.](media/image82.png 'Logic App Designer')
+    ![The Recurrence tile is selected in the Logic App Designer.](media/logic-app-designer-recurrence.png 'Logic App Designer')
 
 4. Enter **15** into the **Interval** box, and make sure Frequency is set to **Minute**. This can be set to an hour or some other interval, depending on business requirements.
 
@@ -708,15 +708,15 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
      - Enter your email address in the **To** box.
      - Provide a **Subject**, such as `Toll Booth license plate export failed`.
-     Please enter a message into the **Body** and select the **Status code** from the ExportLicensePlates function to add it to the email body.
+     - Please enter a message into the **Body** and select the **Status code** from the ExportLicensePlates function to add it to the email body.
 
      ![In the Send an email box, fields are set to the previously defined values.](media/logicapp-send-email-form.png 'Logic App Designer, Send an email fields')
 
 15. Select **Save** in the toolbar to save your Logic App.
 
-16. Select **Run Trigger** to execute the Logic App. You should start receiving email alerts because the license plate data is not being exported. This is because we need to finish making changes to the ExportLicensePlates function to extract the license plate data from Azure Cosmos DB, generate the CSV file, and upload it to Blob storage.
+16. Select **Run Trigger** and click on **Run** to execute the Logic App. You should start receiving email alerts because the license plate data is not being exported. This is because we need to finish making changes to the ExportLicensePlates function to extract the license plate data from Azure Cosmos DB, generate the CSV file, and upload it to Blob storage.
 
-    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logicapp-start.png 'Logic Apps Designer blade')
+    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logic-app-designer-run-trigger.png 'Logic Apps Designer blade')
 
 17. While in the Logic Apps Designer, you will see the run result of each step of your workflow. A green check mark is placed next to each step that successfully executed, showing the execution time to complete. This can be used to see how each step is working, and you can select the executed step and see the raw output.
 
@@ -809,7 +809,7 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 4. Select the **Source** drop-down list and choose **GitHub** from the list.
 
-    ![GitHub is highlighted in the select code source drop-down list.](media/deployment-center-select-code-source.png "Select code source")
+    ![GitHub is highlighted in the select code source drop-down list.](media/github-settings-source.png "Select code source")
 
 5. Select **Authorize** and enter your GitHub credentials.
 
@@ -908,7 +908,7 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 12. Select the **Git** menu in Visual Studio and then select **Commit or Stash...**.
 
-    ![The Git menu is displayed.](media/vs-commit-or-stash.png "Commit or Stash")
+    ![The Git menu is displayed.](media/git-commit-or-stash.png "Commit or Stash")
 
 13. Enter a commit message, then select **Commit All**.
 
