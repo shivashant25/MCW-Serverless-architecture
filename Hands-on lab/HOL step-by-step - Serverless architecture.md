@@ -724,7 +724,7 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
 18. The Logic App will continue to run in the background, executing every 15 minutes (or whichever interval you set) until you disable it. To disable the app, go to the **Overview** blade for the Logic App and select the **Disable** button on the taskbar.
 
-    ![The Disable button is selected on the TollBoothLogic Logic app blade toolbar menu.](media/image97.png 'TollBoothLogic blade')
+    ![The Disable button is selected on the TollBoothLogic Logic app blade toolbar menu.](media/MicrosoftTeams-image.png 'TollBoothLogic blade')
 
 ## Exercise 6: Configure continuous deployment for your Function App
 
