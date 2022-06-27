@@ -985,19 +985,10 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 ## After the hands-on lab
 
-**Duration**: 10 minutes
+**Duration**: 5 minutes
 
-In this exercise, attendees will delete any Azure resources created in support of the lab.
-
-### Task 1: Delete the resource group in which you placed your Azure resources
-
-1. From the Portal, navigate to your **hands-on-lab-SUFFIX** resource group and select **Delete** in the toolbar at the top.
-
-2. Confirm the deletion by re-typing the **resource group name** and selecting **Delete**.
-
-3. If you created a different resource group for your virtual machine, be sure to delete that as well.
-
-### Task 2: Delete the GitHub repo
+In this exercise, attendees will delete the github repo created in support of the lab.
+### Task 1: Delete the GitHub repo
 
 [Optional] In this task, you delete the GitHub repository you created for this lab.
 
