@@ -187,7 +187,7 @@ In this task, you create an RDP connection to your Lab virtual machine.
 
    > **Note**: You may need to select the account icon and log in with your Azure account before seeing the resources below your subscription.
 
-8. Return to the open File Explorer window and navigate back to the **src** subfolder. From there, open the **license plates** subfolder. It contains sample license plate photos used for testing out the solution. One of the images is guaranteed to fail OCR processing, which is meant to show how the workload is designed to handle such failures. The UploadImages project uses the **copyfrom** folder as a basis for the 1,000-photo upload option for testing scalability.
+8. Return to the open File Explorer window and navigate back to `C:\ServerlessMCW\MCW-Serverless-architecture-main\Hands-on lab\lab-files\src\license plates` folder. From there, open the **license plates** subfolder. It contains sample license plate photos used for testing out the solution. One of the images is guaranteed to fail OCR processing, which is meant to show how the workload is designed to handle such failures. The UploadImages project uses the **copyfrom** folder as a basis for the 1,000-photo upload option for testing scalability.
 
 ### Task 3: Finish the ProcessImage function
 
